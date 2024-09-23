@@ -119,7 +119,9 @@ class HumanVGDLController(HumanController):
 
         from .controls import VGDLControls
         self.controls = VGDLControls(self.env.unwrapped.get_action_meanings())
+        self.env.reset()
         self.env.render(mode='human')
+        
 
 
 class ReplayVGDLController(HumanController):
@@ -131,7 +133,9 @@ class ReplayVGDLController(HumanController):
         from .controls import ReplayVGDLControls
         self.controls = ReplayVGDLControls(self.env.unwrapped.get_action_meanings(),
                                      replay_actions)
+        self.env.reset()
         self.env.render(mode='human')
+        
 
 
     def after_step(self, step):

@@ -21,7 +21,14 @@ class KeyValueObservation(PrettyDict, OrderedDict, Observation):
     """
 
     def as_array(self):
-        return np.array(list(self.values()))
+        values = list(self.values())
+        
+        # Intentar crear un array de numpy con dtype=object
+        try:
+            return np.array(values, dtype=object)
+        except Exception as e:
+            print(f"Error creating array: {e}")
+            return None
 
     def as_dict(self):
         return self

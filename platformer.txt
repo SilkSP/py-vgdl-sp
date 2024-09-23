@@ -1,0 +1,21 @@
+BasicGame
+    SpriteSet
+        moving > physicstype=GravityPhysics
+            avatar > PlatformerAvatar img=newset/man1 strength=1 jump_strength=3
+        wall > Immutable img=oryx/wall1
+        goal > Immovable img=newset/flag1
+
+    TerminationSet
+        SpriteCounter stype=goal      win=True scoreChange=1000
+
+    InteractionSet
+	moving wall > wallStop
+	moving wall > stepBack
+	moving wall > reverseDirection
+        goal avatar > killSprite
+        
+
+    LevelMapping
+        G > goal
+        w > wall
+        A > avatar
